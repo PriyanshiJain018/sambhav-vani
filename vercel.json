@@ -1,0 +1,17 @@
+{
+  "buildCommand": null,
+  "outputDirectory": "public",
+  "routes": [
+    {
+      "src": "/sw.js",
+      "headers": { "Cache-Control": "no-cache, no-store, must-revalidate" },
+      "dest": "/sw.js"
+    },
+    {
+      "src": "/manifest.json",
+      "headers": { "Cache-Control": "no-cache" },
+      "dest": "/manifest.json"
+    },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}

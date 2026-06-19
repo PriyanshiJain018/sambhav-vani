@@ -1,0 +1,25 @@
+# fly.toml — Render Service on Fly.io
+# Deploy: fly launch --config render-service/fly.toml
+
+app = "svrs-render"          # change to your app name
+primary_region = "bom"       # Mumbai — closest to India; options: sin, bom, cdg, iad
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT     = "8080"
+  FONTSDIR = "/usr/share/fonts/truetype/noto"
+  # Set RENDER_TOKEN via: fly secrets set RENDER_TOKEN=your-secret-here
+
+[http_service]
+  internal_port       = 8080
+  force_https         = true
+  auto_stop_machines  = true    # scale to zero when idle — saves cost
+  auto_start_machines = true
+  min_machines_running = 0
+
+[[vm]]
+  memory = "1gb"
+  cpu_kind = "shared"
+  cpus = 1

@@ -1,0 +1,2026 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#1A0E05">
+<title>Sambhav Vani Reel Studio</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Vani Studio">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Noto+Sans+Devanagari:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F8F5F0;
+  --bg2: #EFEBE4;
+  --bg3: #E8E2D8;
+  --card: #FFFFFF;
+  --border: #E2DCD3;
+  --border2: #CFC7BA;
+  --saffron: #C75B12;
+  --saffron-light: #FFF4EB;
+  --saffron-dark: #943F08;
+  --saffron-glow: rgba(199,91,18,0.12);
+  --green: #1B7D4E;
+  --green-light: #EDFAF2;
+  --amber: #946B00;
+  --amber-light: #FFF8E1;
+  --red: #B22040;
+  --red-light: #FFF0F3;
+  --blue: #1A56B0;
+  --blue-light: #EEF4FF;
+  --text: #292017;
+  --text2: #5C5245;
+  --text3: #9A9082;
+  --shadow-sm: 0 1px 3px rgba(60,40,10,0.05);
+  --shadow: 0 2px 8px rgba(60,40,10,0.06), 0 8px 24px rgba(60,40,10,0.04);
+  --shadow-lg: 0 4px 12px rgba(60,40,10,0.08), 0 16px 40px rgba(60,40,10,0.06);
+  --r: 14px;
+  --r-lg: 18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans Devanagari','DM Sans',sans-serif;
+  line-height:1.65;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+body::after {
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
+  opacity:0.018;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── NAV ── */
+.nav {
+  position:sticky;top:0;z-index:100;
+  background:rgba(248,245,240,0.92);backdrop-filter:blur(12px);
+  border-bottom:1.5px solid var(--border);
+  padding:0 18px;
+}
+.nav-inner {
+  max-width:760px;margin:0 auto;
+  display:flex;align-items:center;gap:0;
+  height:54px;
+}
+.nav-brand {
+  font-family:'DM Serif Display',serif;
+  font-size:16px;color:var(--saffron-dark);
+  margin-right:auto;letter-spacing:-0.2px;
+}
+.nav-brand span{font-size:10px;font-family:'DM Sans',sans-serif;color:var(--text3);display:block;letter-spacing:1.5px;text-transform:uppercase;margin-top:-2px;}
+.nav-tabs{display:flex;gap:2px;}
+.ntab {
+  padding:8px 14px;border-radius:10px;border:none;background:transparent;
+  font-size:13px;font-weight:600;color:var(--text2);cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:all 0.15s;
+}
+.ntab.active{background:var(--saffron-light);color:var(--saffron-dark);}
+.ntab:hover:not(.active){background:var(--bg2);}
+.mode-badge {
+  margin-left:10px;padding:4px 10px;border-radius:20px;
+  font-size:10px;font-weight:700;font-family:'DM Sans',sans-serif;
+  letter-spacing:1px;text-transform:uppercase;cursor:pointer;
+  background:var(--amber-light);color:var(--amber);border:1.5px solid rgba(148,107,0,0.2);
+  transition:all 0.15s;
+}
+.mode-badge.auto{background:var(--blue-light);color:var(--blue);border-color:rgba(26,86,176,0.2);}
+
+/* ── SCREENS ── */
+.screen{display:none;max-width:760px;margin:0 auto;padding:24px 18px 100px;}
+.screen.active{display:block;}
+
+/* ── STEPPER ── */
+.stepper{display:flex;flex-direction:column;gap:12px;margin-bottom:24px;}
+.step-card {
+  background:var(--card);border:1.5px solid var(--border);
+  border-radius:var(--r-lg);overflow:hidden;
+  box-shadow:var(--shadow-sm);transition:all 0.2s;
+}
+.step-card.active{border-color:var(--saffron);box-shadow:0 0 0 3px var(--saffron-glow),var(--shadow);}
+.step-card.done{border-color:rgba(27,125,78,0.4);}
+.step-card.error{border-color:rgba(178,32,64,0.4);background:var(--red-light);}
+.step-head {
+  display:flex;align-items:center;gap:12px;
+  padding:14px 16px;cursor:pointer;
+}
+.step-num {
+  width:30px;height:30px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:800;font-family:'DM Sans',sans-serif;
+  background:var(--bg2);color:var(--text3);flex-shrink:0;
+  transition:all 0.2s;
+}
+.step-card.active .step-num{background:var(--saffron);color:#fff;}
+.step-card.done .step-num{background:var(--green);color:#fff;}
+.step-card.error .step-num{background:var(--red);color:#fff;}
+.step-label{font-size:14px;font-weight:700;flex:1;}
+.step-status{
+  font-size:11px;font-family:'DM Sans',sans-serif;
+  padding:3px 9px;border-radius:20px;font-weight:700;
+  background:var(--bg2);color:var(--text3);
+}
+.step-card.active .step-status{background:var(--saffron-light);color:var(--saffron);}
+.step-card.done .step-status{background:var(--green-light);color:var(--green);}
+.step-card.error .step-status{background:var(--red-light);color:var(--red);}
+.step-body{
+  padding:0 16px;max-height:0;overflow:hidden;
+  transition:max-height 0.3s ease,padding 0.2s;
+}
+.step-body.open{max-height:2000px;padding:0 16px 16px;}
+
+/* ── SHARED COMPONENTS ── */
+.label-sm{display:block;font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--text3);margin-bottom:5px;font-family:'DM Sans',sans-serif;}
+
+.inp {
+  width:100%;padding:11px 14px;
+  border:1.5px solid var(--border);border-radius:10px;
+  background:var(--bg);color:var(--text);
+  font-size:13px;font-family:inherit;outline:none;
+  transition:border-color 0.15s;
+}
+.inp:focus{border-color:var(--saffron);}
+.inp::placeholder{color:var(--text3);}
+.inp-row{display:flex;gap:8px;align-items:flex-end;}
+.inp-row .inp{flex:1;}
+
+.btn {
+  padding:10px 18px;border-radius:10px;border:none;cursor:pointer;
+  font-size:13px;font-weight:700;font-family:'DM Sans',sans-serif;
+  transition:all 0.15s;white-space:nowrap;
+}
+.btn:active{transform:scale(0.97);}
+.btn-primary{background:var(--saffron);color:#fff;}
+.btn-primary:hover{background:var(--saffron-dark);}
+.btn-primary:disabled{background:var(--border2);color:var(--text3);cursor:not-allowed;transform:none;}
+.btn-outline{background:transparent;color:var(--saffron);border:1.5px solid var(--saffron);}
+.btn-outline:hover{background:var(--saffron-light);}
+.btn-ghost{background:var(--bg2);color:var(--text2);}
+.btn-ghost:hover{background:var(--bg3);}
+.btn-green{background:var(--green);color:#fff;}
+.btn-green:hover{background:#145e3a;}
+.btn-sm{padding:7px 13px;font-size:12px;}
+.btn-xs{padding:5px 10px;font-size:11px;}
+
+.prog-wrap{background:var(--bg2);border-radius:4px;height:6px;overflow:hidden;margin:8px 0;}
+.prog-fill{height:100%;background:var(--saffron);border-radius:4px;transition:width 0.3s;}
+.prog-label{font-size:12px;font-family:'DM Sans',sans-serif;color:var(--text2);display:flex;justify-content:space-between;}
+
+.pill{display:inline-block;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:700;font-family:'DM Sans',sans-serif;}
+.pill-green{background:var(--green-light);color:var(--green);}
+.pill-amber{background:var(--amber-light);color:var(--amber);}
+.pill-red{background:var(--red-light);color:var(--red);}
+.pill-blue{background:var(--blue-light);color:var(--blue);}
+
+.error-box{
+  background:var(--red-light);border:1.5px solid rgba(178,32,64,0.3);
+  border-radius:10px;padding:12px 14px;
+  font-size:13px;color:var(--red);font-family:'DM Sans',sans-serif;
+  white-space:pre-wrap;display:none;margin-top:10px;
+}
+.error-box.show{display:block;}
+
+.divider{border:none;border-top:1.5px solid var(--border);margin:16px 0;}
+
+/* ── UPLOAD ZONE ── */
+.drop {
+  background:var(--card);
+  border:2px dashed var(--border2);
+  border-radius:var(--r-lg);
+  padding:36px 20px;
+  text-align:center;
+  cursor:pointer;
+  transition:all 0.25s;
+  box-shadow:var(--shadow);
+}
+.drop:hover,.drop.dragover{border-color:var(--saffron);background:var(--saffron-light);}
+.drop.has-file{border-style:solid;border-color:var(--green);background:var(--green-light);}
+.drop-icon{font-size:36px;margin-bottom:6px;}
+.drop-title{font-size:16px;font-weight:700;}
+.drop-hint{font-size:13px;color:var(--text2);margin-top:2px;}
+.drop-formats{font-size:11px;color:var(--text3);margin-top:10px;}
+.file-input{display:none;}
+.file-chip{display:flex;align-items:center;gap:10px;margin-top:12px;padding:10px 14px;background:var(--bg);border-radius:10px;text-align:left;}
+.file-chip-icon{font-size:22px;}
+.file-chip-info{flex:1;}
+.file-chip-name{font-size:13px;font-weight:700;word-break:break-all;}
+.file-chip-meta{font-size:11px;color:var(--text2);}
+.file-chip-x{background:none;border:none;cursor:pointer;font-size:16px;color:var(--text3);padding:4px;}
+
+/* ── CANDIDATE CARDS ── */
+.candidate-list{display:flex;flex-direction:column;gap:10px;margin:12px 0;}
+.cand-card{
+  background:var(--card);border:2px solid var(--border);
+  border-radius:var(--r);padding:14px;cursor:pointer;
+  transition:all 0.2s;
+}
+.cand-card:hover{border-color:var(--saffron);background:var(--saffron-light);}
+.cand-card.selected{border-color:var(--saffron);background:var(--saffron-light);box-shadow:0 0 0 3px var(--saffron-glow);}
+.cand-rank{font-size:10px;font-weight:800;font-family:'DM Sans',sans-serif;color:var(--text3);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+.cand-title{font-size:15px;font-weight:700;margin-bottom:4px;}
+.cand-reason{font-size:12px;color:var(--text2);font-family:'DM Sans',sans-serif;}
+.cand-time{font-size:11px;color:var(--text3);font-family:'DM Sans',monospace;margin-top:6px;}
+.cand-auto-badge{font-size:10px;font-weight:800;background:var(--blue);color:#fff;padding:2px 8px;border-radius:20px;margin-left:8px;font-family:'DM Sans',sans-serif;letter-spacing:0.5px;}
+
+/* ── NUDGE CONTROLS ── */
+.nudge-row{display:flex;align-items:center;gap:8px;margin-top:10px;}
+.nudge-row label{font-size:11px;font-weight:700;font-family:'DM Sans',sans-serif;color:var(--text3);width:40px;letter-spacing:0.5px;}
+.nudge-inp{width:80px;padding:7px 10px;border:1.5px solid var(--border);border-radius:8px;background:var(--bg);font-size:13px;font-family:'DM Sans',monospace;outline:none;text-align:center;}
+.nudge-inp:focus{border-color:var(--saffron);}
+
+/* ── DIFF VIEW ── */
+.diff-view{margin-top:10px;font-size:13px;font-family:'DM Sans',sans-serif;max-height:300px;overflow-y:auto;border:1.5px solid var(--border);border-radius:10px;padding:10px;}
+.diff-line{padding:4px 8px;border-radius:4px;margin-bottom:2px;line-height:1.5;}
+.diff-changed{background:rgba(148,107,0,0.1);border-left:3px solid var(--amber);}
+.diff-before{font-size:11px;color:var(--text3);text-decoration:line-through;}
+.diff-after{color:var(--text);}
+
+/* ── METADATA VIEW ── */
+.meta-field{margin-bottom:14px;}
+.meta-val{
+  background:var(--bg);border:1.5px solid var(--border);
+  border-radius:10px;padding:10px 14px;
+  font-size:13px;min-height:40px;
+  font-family:'Noto Sans Devanagari',sans-serif;
+  display:flex;justify-content:space-between;align-items:flex-start;gap:10px;
+}
+.meta-val .text{flex:1;line-height:1.6;}
+.copy-btn{background:none;border:none;cursor:pointer;font-size:16px;padding:2px;flex-shrink:0;opacity:0.6;transition:opacity 0.15s;}
+.copy-btn:hover{opacity:1;}
+.hashtags{display:flex;flex-wrap:wrap;gap:6px;padding:10px 14px;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;}
+.hashtag{padding:3px 10px;background:var(--saffron-light);color:var(--saffron-dark);border-radius:20px;font-size:12px;font-weight:600;}
+
+/* ── REVIEW VIDEO ── */
+.video-wrap{border-radius:var(--r);overflow:hidden;background:#000;margin:12px 0;max-height:480px;display:flex;justify-content:center;}
+.video-wrap video{max-height:480px;width:auto;}
+
+/* ── KEYS SCREEN ── */
+.key-block{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:16px;box-shadow:var(--shadow-sm);}
+.key-block-title{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);font-family:'DM Sans',sans-serif;margin-bottom:12px;}
+
+/* ── CONFIG SCREEN ── */
+.cfg-section{margin-bottom:24px;}
+.cfg-section-title{font-size:13px;font-weight:800;font-family:'DM Sans',sans-serif;margin-bottom:12px;color:var(--text);letter-spacing:0.3px;}
+.cfg-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+.cfg-field{display:flex;flex-direction:column;gap:5px;}
+.cfg-field.full{grid-column:1/-1;}
+.cfg-field textarea{
+  width:100%;padding:10px 14px;
+  border:1.5px solid var(--border);border-radius:10px;
+  background:var(--bg);color:var(--text);
+  font-size:12px;font-family:'DM Sans',monospace;
+  outline:none;resize:vertical;min-height:100px;
+  transition:border-color 0.15s;
+}
+.cfg-field textarea:focus{border-color:var(--saffron);}
+
+/* ── TOAST ── */
+#toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:#292017;color:#fff;
+  padding:11px 20px;border-radius:10px;
+  font-size:13px;font-family:'DM Sans',sans-serif;font-weight:600;
+  opacity:0;transition:all 0.25s;z-index:9998;pointer-events:none;
+  white-space:nowrap;
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* ── TRANSCRIPT EDIT ── */
+.transcript-edit{
+  width:100%;padding:12px;
+  border:1.5px solid var(--border);border-radius:10px;
+  background:var(--bg);color:var(--text);
+  font-size:13px;font-family:inherit;
+  outline:none;resize:vertical;min-height:120px;
+  transition:border-color 0.15s;
+  line-height:1.8;
+}
+.transcript-edit:focus{border-color:var(--saffron);}
+
+/* ── SECTION HEADER ── */
+.sec-hdr{
+  padding:28px 0 20px;
+  border-bottom:1.5px solid var(--border);
+  margin-bottom:24px;
+  position:relative;
+}
+.sec-hdr::after{
+  content:'';position:absolute;bottom:-1px;left:0;
+  width:60px;height:3px;border-radius:2px;
+  background:linear-gradient(90deg,var(--saffron),transparent);
+}
+.sec-hdr h2{font-family:'DM Serif Display',serif;font-size:22px;font-weight:400;color:var(--saffron-dark);}
+.sec-hdr p{font-size:13px;color:var(--text2);font-family:'DM Sans',sans-serif;margin-top:4px;}
+
+/* ── NEW JOB BTN ── */
+.fab{
+  position:fixed;bottom:24px;right:18px;
+  width:52px;height:52px;border-radius:50%;
+  background:var(--saffron);color:#fff;
+  border:none;font-size:22px;cursor:pointer;
+  box-shadow:0 4px 16px rgba(199,91,18,0.35);
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.2s;z-index:200;
+}
+.fab:hover{background:var(--saffron-dark);transform:scale(1.08);}
+
+/* ── SWITCH ── */
+.toggle-row{display:flex;align-items:center;gap:10px;margin:8px 0;}
+.toggle-label{font-size:13px;font-family:'DM Sans',sans-serif;color:var(--text2);}
+.toggle{
+  width:40px;height:22px;border-radius:11px;
+  background:var(--border2);position:relative;cursor:pointer;
+  transition:background 0.2s;flex-shrink:0;border:none;
+}
+.toggle.on{background:var(--saffron);}
+.toggle::after{
+  content:'';position:absolute;width:16px;height:16px;
+  border-radius:50%;background:#fff;top:3px;left:3px;
+  transition:transform 0.2s;box-shadow:0 1px 3px rgba(0,0,0,0.2);
+}
+.toggle.on::after{transform:translateX(18px);}
+
+/* ── SPINNER ── */
+@keyframes spin{to{transform:rotate(360deg)}}
+.spinner{
+  display:inline-block;width:16px;height:16px;
+  border:2px solid rgba(199,91,18,0.2);
+  border-top-color:var(--saffron);
+  border-radius:50%;animation:spin 0.7s linear infinite;
+  vertical-align:middle;margin-right:6px;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.pulsing{animation:pulse 1.5s ease-in-out infinite;}
+
+/* ── SRT VIEWER ── */
+.srt-view{
+  max-height:200px;overflow-y:auto;
+  border:1.5px solid var(--border);border-radius:10px;
+  padding:10px;background:var(--bg);
+  font-size:12px;font-family:'DM Sans',monospace;
+  color:var(--text2);white-space:pre-wrap;
+  margin-top:8px;
+}
+
+/* ── TITLE DISPLAY ── */
+.title-display{
+  background:linear-gradient(135deg,var(--saffron-light),var(--amber-light));
+  border:2px solid rgba(199,91,18,0.2);
+  border-radius:var(--r);
+  padding:20px;text-align:center;
+  font-size:20px;font-weight:700;
+  color:var(--saffron-dark);
+  line-height:1.4;
+  margin:10px 0;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:480px){
+  .cfg-grid{grid-template-columns:1fr;}
+  .nav-brand span{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      Sambhav Vani
+      <span>Reel Studio</span>
+    </div>
+    <div class="nav-tabs">
+      <button class="ntab active" onclick="switchScreen('studio')">Studio</button>
+      <button class="ntab" onclick="switchScreen('config')">Config</button>
+      <button class="ntab" onclick="switchScreen('keys')">Keys</button>
+    </div>
+    <button class="mode-badge" id="modeBadge" onclick="toggleMode()">Assisted</button>
+  </div>
+</nav>
+
+<!-- STUDIO SCREEN -->
+<div class="screen active" id="screen-studio">
+
+  <!-- Stage 0: Transcribe -->
+  <div class="step-card active" id="step0">
+    <div class="step-head" onclick="toggleStep(0)">
+      <div class="step-num">0</div>
+      <div class="step-label">Transcribe</div>
+      <div class="step-status" id="s0status">Idle</div>
+    </div>
+    <div class="step-body open" id="sb0">
+      <div class="drop" id="dropZone" onclick="document.getElementById('fileInput').click()" 
+           ondragover="onDragOver(event)" ondragleave="onDragLeave(event)" ondrop="onDrop(event)">
+        <div class="drop-icon">🎙️</div>
+        <div class="drop-title">Pravachan अपलोड करें</div>
+        <div class="drop-hint">Audio या Video — click करें या drag करें</div>
+        <div class="drop-formats">mp3 · wav · m4a · ogg · aac · flac · webm · mp4 · mkv · mov</div>
+        <div id="fileChip" style="display:none"></div>
+      </div>
+      <input type="file" class="file-input" id="fileInput"
+             accept=".mp3,.wav,.m4a,.ogg,.aac,.flac,.webm,.wma,.opus,.mp4,.mkv,.mov,.avi"
+             onchange="handleFile(event.target.files[0])">
+      
+      <div style="margin-top:14px">
+        <div id="progWrap" style="display:none">
+          <div class="prog-label"><span id="progTitle">Processing...</span><span id="progPct">0%</span></div>
+          <div class="prog-wrap"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
+          <div id="progDetail" style="font-size:11px;color:var(--text3);font-family:'DM Sans',sans-serif;margin-top:4px;"></div>
+        </div>
+        <div id="errBox0" class="error-box"></div>
+        
+        <div id="transcriptSection" style="display:none;margin-top:12px;">
+          <label class="label-sm">Transcript (edit करें यदि जरूरी हो)</label>
+          <textarea class="transcript-edit" id="transcriptText" rows="5"></textarea>
+          <div style="margin-top:6px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <span id="transcriptMeta" style="font-size:11px;color:var(--text3);font-family:'DM Sans',sans-serif;flex:1;"></span>
+            <button class="btn btn-ghost btn-sm" onclick="downloadSRT()">⬇️ SRT</button>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="btn btn-primary" id="transcribeBtn" onclick="startTranscription()" disabled>
+          📝 Transcribe करें
+        </button>
+        <button class="btn btn-ghost btn-sm" id="cancelBtn" onclick="cancelTranscription()" style="display:none">⏹ रोकें</button>
+        <button class="btn btn-outline btn-sm" id="proceedToSelectBtn" onclick="proceedToSelect()" style="display:none">
+          अगला: Clip चुनें →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 1: Select -->
+  <div class="step-card" id="step1">
+    <div class="step-head" onclick="toggleStep(1)">
+      <div class="step-num">1</div>
+      <div class="step-label">Clip Select</div>
+      <div class="step-status" id="s1status">Waiting</div>
+    </div>
+    <div class="step-body" id="sb1">
+      <div id="selectRunning" style="display:none">
+        <span class="spinner"></span><span class="pulsing">5 candidates ढूंढ रहे हैं...</span>
+      </div>
+      <div id="candidateList" class="candidate-list"></div>
+      <div id="errBox1" class="error-box"></div>
+      
+      <div id="nudgeSection" style="display:none;margin-top:10px;padding:12px;background:var(--bg2);border-radius:10px;">
+        <label class="label-sm">In/Out Adjust (seconds)</label>
+        <div class="nudge-row">
+          <label>In ▶</label>
+          <input type="number" class="nudge-inp" id="nudgeIn" step="1" value="0">
+          <label>Out ◀</label>
+          <input type="number" class="nudge-inp" id="nudgeOut" step="1" value="0">
+        </div>
+      </div>
+      
+      <div style="margin-top:12px;display:flex;gap:8px;" id="selectBtns" style="display:none">
+        <button class="btn btn-primary" id="confirmPickBtn" onclick="confirmPick()" disabled>
+          ✅ इस Clip को चुनें
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 2: Correct -->
+  <div class="step-card" id="step2">
+    <div class="step-head" onclick="toggleStep(2)">
+      <div class="step-num">2</div>
+      <div class="step-label">Subtitle Correction</div>
+      <div class="step-status" id="s2status">Waiting</div>
+    </div>
+    <div class="step-body" id="sb2">
+      <div id="correctRunning" style="display:none">
+        <span class="spinner"></span><span class="pulsing">Subtitles correct कर रहे हैं (Maker → Checker)...</span>
+      </div>
+      <div id="diffView" class="diff-view" style="display:none"></div>
+      <div id="errBox2" class="error-box"></div>
+      <div id="correctedSRTWrap" style="display:none">
+        <label class="label-sm" style="margin-top:10px">Corrected SRT</label>
+        <div class="srt-view" id="correctedSRT"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 3: Title -->
+  <div class="step-card" id="step3">
+    <div class="step-head" onclick="toggleStep(3)">
+      <div class="step-num">3</div>
+      <div class="step-label">Title Generate</div>
+      <div class="step-status" id="s3status">Waiting</div>
+    </div>
+    <div class="step-body" id="sb3">
+      <div id="titleRunning" style="display:none">
+        <span class="spinner"></span><span class="pulsing">Title लिख रहे हैं...</span>
+      </div>
+      <div id="titleDisplay" class="title-display" style="display:none"></div>
+      <div id="errBox3" class="error-box"></div>
+      <div style="margin-top:10px;display:flex;gap:8px;" id="titleEditWrap" style="display:none">
+        <input type="text" class="inp" id="titleEdit" placeholder="Title edit करें...">
+        <button class="btn btn-ghost btn-sm" onclick="useEditedTitle()">✓ Use</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 4: Render -->
+  <div class="step-card" id="step4">
+    <div class="step-head" onclick="toggleStep(4)">
+      <div class="step-num">4</div>
+      <div class="step-label">Render Reel</div>
+      <div class="step-status" id="s4status">Waiting</div>
+    </div>
+    <div class="step-body" id="sb4">
+      <div id="renderRunning" style="display:none">
+        <span class="spinner"></span><span class="pulsing">Render हो रहा है (FFmpeg)...</span>
+        <div style="font-size:11px;color:var(--text3);font-family:'DM Sans',sans-serif;margin-top:6px;">यह 1–3 मिनट लग सकता है।</div>
+      </div>
+      <div id="errBox4" class="error-box"></div>
+      <div id="renderDoneMsg" style="display:none;color:var(--green);font-size:13px;font-family:'DM Sans',sans-serif;">
+        ✅ Reel render हो गया! Review में देखें।
+      </div>
+      
+      <div style="margin-top:10px;" id="renderUrlSection" style="display:none">
+        <label class="label-sm">Render Service URL</label>
+        <div class="inp-row">
+          <input type="text" class="inp" id="renderUrlInput" placeholder="https://your-render-service.fly.dev">
+          <button class="btn btn-ghost btn-sm" onclick="saveRenderUrl()">Save</button>
+        </div>
+        <div style="margin-top:6px;font-size:11px;color:var(--text3);font-family:'DM Sans',sans-serif;">
+          Render service URL Keys menu में भी save होती है।
+        </div>
+      </div>
+      
+      <div style="margin-top:10px;" id="logoSection">
+        <label class="label-sm">Logo (PNG, optional)</label>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <input type="file" id="logoInput" accept=".png,.jpg,.jpeg,.webp" style="display:none" onchange="handleLogo(event)">
+          <button class="btn btn-ghost btn-sm" onclick="document.getElementById('logoInput').click()">📎 Logo चुनें</button>
+          <span id="logoName" style="font-size:12px;color:var(--text2);font-family:'DM Sans',sans-serif;"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 5: Metadata -->
+  <div class="step-card" id="step5">
+    <div class="step-head" onclick="toggleStep(5)">
+      <div class="step-num">5</div>
+      <div class="step-label">Metadata</div>
+      <div class="step-status" id="s5status">Waiting</div>
+    </div>
+    <div class="step-body" id="sb5">
+      <div id="metaRunning" style="display:none">
+        <span class="spinner"></span><span class="pulsing">YouTube metadata लिख रहे हैं...</span>
+      </div>
+      <div id="metaView" style="display:none">
+        <div class="meta-field">
+          <label class="label-sm">Title</label>
+          <div class="meta-val"><span class="text" id="metaTitle">—</span><button class="copy-btn" onclick="copyText('metaTitle')">📋</button></div>
+        </div>
+        <div class="meta-field">
+          <label class="label-sm">Description</label>
+          <div class="meta-val"><span class="text" id="metaDesc">—</span><button class="copy-btn" onclick="copyText('metaDesc')">📋</button></div>
+        </div>
+        <div class="meta-field">
+          <label class="label-sm">Hashtags</label>
+          <div class="hashtags" id="metaHashtags"></div>
+        </div>
+      </div>
+      <div id="errBox5" class="error-box"></div>
+    </div>
+  </div>
+
+  <!-- Stage 6: Review -->
+  <div class="step-card" id="step6">
+    <div class="step-head" onclick="toggleStep(6)">
+      <div class="step-num">6</div>
+      <div class="step-label">Review & Download</div>
+      <div class="step-status" id="s6status">Waiting</div>
+    </div>
+    <div class="step-body" id="sb6">
+      <div id="reviewContent" style="display:none">
+        <div class="video-wrap">
+          <video id="reviewVideo" controls playsinline></video>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;">
+          <button class="btn btn-green" onclick="downloadReel()">⬇️ Reel Download करें</button>
+          <button class="btn btn-ghost btn-sm" onclick="downloadMetaJSON()">📄 Metadata JSON</button>
+          <button class="btn btn-outline btn-sm" onclick="startNewJob()">🔄 नया Pravachan</button>
+        </div>
+      </div>
+      <div id="reviewWaiting" style="font-size:13px;color:var(--text3);font-family:'DM Sans',sans-serif;">
+        Render पूरा होने पर यहाँ preview आएगा।
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CONFIG SCREEN -->
+<div class="screen" id="screen-config">
+  <div class="sec-hdr">
+    <h2>Configuration</h2>
+    <p>Prompts, render params, और mode settings</p>
+  </div>
+  
+  <div class="cfg-section">
+    <div class="cfg-section-title">App Settings</div>
+    <div class="cfg-grid">
+      <div class="cfg-field">
+        <label class="label-sm">Clip Min (sec)</label>
+        <input type="number" class="inp" id="cfg_clip_min" value="20" min="5" max="60">
+      </div>
+      <div class="cfg-field">
+        <label class="label-sm">Clip Max (sec)</label>
+        <input type="number" class="inp" id="cfg_clip_max" value="60" min="20" max="180">
+      </div>
+    </div>
+    <div class="toggle-row" style="margin-top:12px;">
+      <button class="toggle on" id="toggleCorrection" onclick="toggleCfg('correction_enabled')"></button>
+      <span class="toggle-label">Subtitle Correction (Maker + Checker)</span>
+    </div>
+  </div>
+
+  <div class="cfg-section">
+    <div class="cfg-section-title">Models</div>
+    <div class="cfg-grid">
+      <div class="cfg-field">
+        <label class="label-sm">Clip Select</label>
+        <input type="text" class="inp" id="cfg_clip_model" value="gemini-2.5-flash">
+      </div>
+      <div class="cfg-field">
+        <label class="label-sm">Title</label>
+        <input type="text" class="inp" id="cfg_title_model" value="gemini-2.5-flash">
+      </div>
+      <div class="cfg-field">
+        <label class="label-sm">Metadata</label>
+        <input type="text" class="inp" id="cfg_metadata_model" value="gemini-2.5-flash">
+      </div>
+      <div class="cfg-field">
+        <label class="label-sm">Maker (Correction)</label>
+        <input type="text" class="inp" id="cfg_maker_model" value="gemini-2.5-flash">
+      </div>
+      <div class="cfg-field">
+        <label class="label-sm">Checker (Correction)</label>
+        <input type="text" class="inp" id="cfg_checker_model" value="llama-3.3-70b-versatile">
+      </div>
+      <div class="cfg-field">
+        <label class="label-sm">Sarvam STT</label>
+        <input type="text" class="inp" id="cfg_sarvam_model" value="saaras:v3">
+      </div>
+    </div>
+  </div>
+
+  <div class="cfg-section">
+    <div class="cfg-section-title">Render Params</div>
+    <div class="cfg-grid">
+      <div class="cfg-field">
+        <label class="label-sm">Resolution W</label>
+        <input type="number" class="inp" id="cfg_res_w" value="1080">
+      </div>
+      <div class="cfg-field">
+        <label class="label-sm">Resolution H</label>
+        <input type="number" class="inp" id="cfg_res_h" value="1920">
+      </div>
+      <div class="cfg-field">
+        <label class="label-sm">Fade (sec)</label>
+        <input type="number" class="inp" id="cfg_fade" value="0.5" step="0.1">
+      </div>
+      <div class="cfg-field">
+        <label class="label-sm">Sub Font Size</label>
+        <input type="number" class="inp" id="cfg_sub_fontsize" value="18">
+      </div>
+      <div class="cfg-field">
+        <label class="label-sm">Sub Margin V</label>
+        <input type="number" class="inp" id="cfg_sub_margin_v" value="90">
+      </div>
+      <div class="cfg-field">
+        <label class="label-sm">Title Font Size</label>
+        <input type="number" class="inp" id="cfg_title_fontsize" value="52">
+      </div>
+      <div class="cfg-field">
+        <label class="label-sm">Title Margin Top</label>
+        <input type="number" class="inp" id="cfg_title_margin_top" value="170">
+      </div>
+      <div class="cfg-field">
+        <label class="label-sm">Logo Width</label>
+        <input type="number" class="inp" id="cfg_logo_w" value="130">
+      </div>
+      <div class="cfg-field">
+        <label class="label-sm">Logo Alpha</label>
+        <input type="number" class="inp" id="cfg_logo_alpha" value="0.4" step="0.05" min="0" max="1">
+      </div>
+      <div class="cfg-field">
+        <label class="label-sm">Logo Side</label>
+        <select class="inp" id="cfg_logo_side">
+          <option value="right">Right</option>
+          <option value="left">Left</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="cfg-section">
+    <div class="cfg-section-title">Prompts</div>
+    
+    <div class="cfg-field" style="margin-bottom:14px;">
+      <label class="label-sm">Clip Select (sentinel: &lt;&lt;TRANSCRIPT&gt;&gt;)</label>
+      <textarea class="inp" id="prompt_clip_select" rows="6"></textarea>
+    </div>
+    <div class="cfg-field" style="margin-bottom:14px;">
+      <label class="label-sm">Rank / Auto (sentinel: &lt;&lt;CANDIDATES_JSON&gt;&gt;)</label>
+      <textarea class="inp" id="prompt_rank" rows="4"></textarea>
+    </div>
+    <div class="cfg-field" style="margin-bottom:14px;">
+      <label class="label-sm">Maker Correction (sentinel: &lt;&lt;LINES_JSON&gt;&gt;)</label>
+      <textarea class="inp" id="prompt_maker" rows="6"></textarea>
+    </div>
+    <div class="cfg-field" style="margin-bottom:14px;">
+      <label class="label-sm">Checker (sentinel: &lt;&lt;PAIRS_JSON&gt;&gt;)</label>
+      <textarea class="inp" id="prompt_checker" rows="5"></textarea>
+    </div>
+    <div class="cfg-field" style="margin-bottom:14px;">
+      <label class="label-sm">Title (sentinel: &lt;&lt;CLIP&gt;&gt;)</label>
+      <textarea class="inp" id="prompt_title" rows="4"></textarea>
+    </div>
+    <div class="cfg-field" style="margin-bottom:14px;">
+      <label class="label-sm">Metadata (sentinel: &lt;&lt;HEADLINE&gt;&gt;)</label>
+      <textarea class="inp" id="prompt_metadata" rows="5"></textarea>
+    </div>
+  </div>
+  
+  <button class="btn btn-primary" onclick="saveConfig()">💾 Config Save करें</button>
+</div>
+
+<!-- KEYS SCREEN -->
+<div class="screen" id="screen-keys">
+  <div class="sec-hdr">
+    <h2>API Keys</h2>
+    <p>Keys browser में save होती हैं। Proxy URLs required हैं।</p>
+  </div>
+
+  <div class="key-block">
+    <div class="key-block-title">Sarvam STT</div>
+    <label class="label-sm">API Key <span id="ks_sarvam" class="pill" style="margin-left:6px;"></span></label>
+    <div class="inp-row" style="margin-bottom:10px;">
+      <input type="password" class="inp" id="k_sarvam" placeholder="sarvam api key">
+      <button class="btn btn-ghost btn-sm" onclick="testKey('sarvam')">Test</button>
+      <button class="btn btn-primary btn-sm" onclick="saveKey('sarvam')">Save</button>
+    </div>
+    <label class="label-sm">Proxy URL <span id="ks_sarvam_proxy" class="pill" style="margin-left:6px;"></span></label>
+    <div class="inp-row">
+      <input type="text" class="inp" id="k_sarvam_proxy" placeholder="https://sarvam-proxy.your.workers.dev">
+      <button class="btn btn-primary btn-sm" onclick="saveKey('sarvam_proxy')">Save</button>
+    </div>
+  </div>
+
+  <div class="key-block">
+    <div class="key-block-title">Gemini (Google)</div>
+    <label class="label-sm">API Key <span id="ks_gemini" class="pill" style="margin-left:6px;"></span></label>
+    <div class="inp-row" style="margin-bottom:10px;">
+      <input type="password" class="inp" id="k_gemini" placeholder="AIza...">
+      <button class="btn btn-ghost btn-sm" onclick="testKey('gemini')">Test</button>
+      <button class="btn btn-primary btn-sm" onclick="saveKey('gemini')">Save</button>
+    </div>
+    <label class="label-sm">LLM Proxy URL (optional) <span id="ks_llm_proxy" class="pill" style="margin-left:6px;"></span></label>
+    <div class="inp-row">
+      <input type="text" class="inp" id="k_llm_proxy" placeholder="https://llm-proxy.your.workers.dev (optional)">
+      <button class="btn btn-primary btn-sm" onclick="saveKey('llm_proxy')">Save</button>
+    </div>
+  </div>
+
+  <div class="key-block">
+    <div class="key-block-title">Groq (Checker Model)</div>
+    <label class="label-sm">API Key <span id="ks_groq" class="pill" style="margin-left:6px;"></span></label>
+    <div class="inp-row">
+      <input type="password" class="inp" id="k_groq" placeholder="gsk_...">
+      <button class="btn btn-ghost btn-sm" onclick="testKey('groq')">Test</button>
+      <button class="btn btn-primary btn-sm" onclick="saveKey('groq')">Save</button>
+    </div>
+  </div>
+
+  <div class="key-block">
+    <div class="key-block-title">Render Service</div>
+    <label class="label-sm">URL <span id="ks_render_url" class="pill" style="margin-left:6px;"></span></label>
+    <div class="inp-row" style="margin-bottom:10px;">
+      <input type="text" class="inp" id="k_render_url" placeholder="https://your-render-service.fly.dev">
+      <button class="btn btn-primary btn-sm" onclick="saveKey('render_url')">Save</button>
+    </div>
+    <label class="label-sm">Render Token (X-Render-Token)</label>
+    <div class="inp-row">
+      <input type="password" class="inp" id="k_render_token" placeholder="shared secret">
+      <button class="btn btn-primary btn-sm" onclick="saveKey('render_token')">Save</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════
+const STATE = {
+  mode: 'assisted',       // 'assisted' | 'auto'
+  selectedFile: null,
+  logoFile: null,
+  audioBuffer: null,
+  allTimestamps: [],      // [{word,start,end}]
+  srtFull: '',
+  transcriptText: '',
+  candidates: [],
+  pickIndex: -1,
+  clipStart: 0,
+  clipEnd: 0,
+  clipLines: [],          // [{s,e,before,after}]
+  correctedSRT: '',
+  titleText: '',
+  metadata: null,
+  outputBlobUrl: null,
+  isTranscribing: false,
+  cancelled: false,
+  learned: {},            // word→{replacement,count}
+};
+
+const CONCURRENCY = 3;
+const CHUNK_SEC = 29;
+const MAX_RETRIES = 3;
+
+// ═══════════════════════════════════════════
+//  INDEXEDDB
+// ═══════════════════════════════════════════
+let db = null;
+async function openDB() {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open('svrs', 1);
+    req.onupgradeneeded = e => {
+      const d = e.target.result;
+      if (!d.objectStoreNames.contains('keys')) d.createObjectStore('keys', { keyPath: 'provider' });
+      if (!d.objectStoreNames.contains('prompts')) d.createObjectStore('prompts', { keyPath: 'id' });
+      if (!d.objectStoreNames.contains('params')) d.createObjectStore('params', { keyPath: 'id' });
+      if (!d.objectStoreNames.contains('learned_dict')) d.createObjectStore('learned_dict', { keyPath: 'word' });
+    };
+    req.onsuccess = e => resolve(e.target.result);
+    req.onerror = e => reject(e.target.error);
+  });
+}
+
+async function dbGet(store, key) {
+  const tx = db.transaction(store, 'readonly');
+  return new Promise((res, rej) => {
+    const r = tx.objectStore(store).get(key);
+    r.onsuccess = () => res(r.result);
+    r.onerror = () => rej(r.error);
+  });
+}
+
+async function dbPut(store, obj) {
+  const tx = db.transaction(store, 'readwrite');
+  return new Promise((res, rej) => {
+    const r = tx.objectStore(store).put(obj);
+    r.onsuccess = () => res();
+    r.onerror = () => rej(r.error);
+  });
+}
+
+async function dbGetAll(store) {
+  const tx = db.transaction(store, 'readonly');
+  return new Promise((res, rej) => {
+    const r = tx.objectStore(store).getAll();
+    r.onsuccess = () => res(r.result);
+    r.onerror = () => rej(r.error);
+  });
+}
+
+async function getKey(k) {
+  const r = await dbGet('keys', k);
+  return r ? r.value : (localStorage.getItem('k_'+k) || '');
+}
+async function setKey(k, v) {
+  await dbPut('keys', { provider: k, value: v });
+  localStorage.setItem('k_'+k, v);
+}
+
+async function loadLearnedDict() {
+  const all = await dbGetAll('learned_dict');
+  STATE.learned = {};
+  for (const e of all) STATE.learned[e.word] = { replacement: e.replacement, count: e.count };
+}
+async function saveLearnedDict() {
+  for (const [word, data] of Object.entries(STATE.learned)) {
+    await dbPut('learned_dict', { word, replacement: data.replacement, count: data.count });
+  }
+}
+
+// ═══════════════════════════════════════════
+//  DEFAULT PROMPTS
+// ═══════════════════════════════════════════
+const DEFAULT_PROMPTS = {
+  clip_select: `You are selecting short reel-worthy segments from a Jain pravachan (Hindi) by a revered muni.
+Propose the 5 strongest 20-60 second segments for a vertical reel.
+Prefer self-contained insights, vivid stories, or memorable lines that start and end on a clean thought.
+Avoid mid-sentence starts and greeting/admin portions.
+Return ONLY valid JSON (no markdown):
+[{"start_sec": <num>, "end_sec": <num>, "title_hindi": "<short title>", "reason": "<one line>"}]
+TRANSCRIPT:
+<<TRANSCRIPT>>`,
+
+  rank: `Given these candidate reel clips as a JSON array, choose the single best one for engagement on a spiritual short-video channel. Return ONLY JSON: {"best_index": <int>}.
+CANDIDATES:
+<<CANDIDATES_JSON>>`,
+
+  maker: `Correct ONLY obvious Hindi transcription errors in these subtitle lines: misspellings, wrong homophones, broken/merged word boundaries. DO NOT change proper nouns, names, or any unfamiliar spiritual/technical term — if unsure a word is wrong, leave it EXACTLY as-is. Never merge, split, reorder, or drop lines. Return ONLY JSON with the SAME number of items and same i:
+[{"i":<int>,"text":"<corrected>"}]
+LINES:
+<<LINES_JSON>>`,
+
+  checker: `You are checking Hindi subtitle corrections. For each pair, 'before' is original, 'after' is a proposed correction. Return the indices to REVERT to 'before' because the correction changed the meaning, replaced a likely proper noun / special term, or added an unjustified word. Be conservative: when unsure, REVERT. Return ONLY JSON: {"revert":[<int>,...]}
+PAIRS:
+<<PAIRS_JSON>>`,
+
+  title: `Write ONE short, attractive YouTube-reel title in Hindi for this Jain pravachan clip. Curiosity-driving but respectful. Max 8 words. No quotes, no hashtags, no emoji. Return ONLY the title text.
+CLIP:
+<<CLIP>>`,
+
+  metadata: `Write YouTube metadata in Hindi for a reel from a Jain pravachan titled "<<HEADLINE>>".
+Return ONLY JSON (no markdown):
+{"title":"<=70 chars Hindi","description":"2-3 lines Hindi, gentle subscribe nudge","hashtags":["#...","..."]}`
+};
+
+const DEFAULT_APP_PARAMS = {
+  clip_min_sec: 20, clip_max_sec: 60, correction_enabled: true,
+  clip_model: 'gemini-2.5-flash', title_model: 'gemini-2.5-flash',
+  metadata_model: 'gemini-2.5-flash', maker_model: 'gemini-2.5-flash',
+  checker_model: 'llama-3.3-70b-versatile', sarvam_model: 'saaras:v3'
+};
+const DEFAULT_RENDER_PARAMS = {
+  res_w:1080,res_h:1920,fade:0.5,sub_fontsize:54,sub_margin_v:160,
+  title_fontsize:60,title_margin_top:170,title_alignment:8,
+  logo_w:130,logo_alpha:0.4,logo_margin:40,logo_period:26,logo_side:'right'
+};
+
+let appParams = { ...DEFAULT_APP_PARAMS };
+let renderParams = { ...DEFAULT_RENDER_PARAMS };
+let prompts = { ...DEFAULT_PROMPTS };
+
+async function loadConfig() {
+  const ap = await dbGet('params', 'app');
+  if (ap) appParams = { ...DEFAULT_APP_PARAMS, ...ap };
+  const rp = await dbGet('params', 'render');
+  if (rp) renderParams = { ...DEFAULT_RENDER_PARAMS, ...rp };
+
+  for (const key of Object.keys(DEFAULT_PROMPTS)) {
+    const p = await dbGet('prompts', key);
+    if (p) prompts[key] = p.text;
+  }
+}
+
+function populateConfigUI() {
+  // App params
+  $('cfg_clip_min').value = appParams.clip_min_sec;
+  $('cfg_clip_max').value = appParams.clip_max_sec;
+  updateToggleUI('toggleCorrection', appParams.correction_enabled);
+  // Models
+  for (const k of ['clip_model','title_model','metadata_model','maker_model','checker_model','sarvam_model']) {
+    const el = $('cfg_'+k);
+    if (el) el.value = appParams[k] || DEFAULT_APP_PARAMS[k];
+  }
+  // Render
+  for (const k of Object.keys(DEFAULT_RENDER_PARAMS)) {
+    const el = $('cfg_'+k);
+    if (el) el.value = renderParams[k];
+  }
+  // Prompts
+  for (const k of Object.keys(DEFAULT_PROMPTS)) {
+    const el = $('prompt_'+k);
+    if (el) el.value = prompts[k];
+  }
+}
+
+async function saveConfig() {
+  appParams.clip_min_sec = parseInt($('cfg_clip_min').value)||20;
+  appParams.clip_max_sec = parseInt($('cfg_clip_max').value)||60;
+  for (const k of ['clip_model','title_model','metadata_model','maker_model','checker_model','sarvam_model']) {
+    const el = $('cfg_'+k);
+    if (el) appParams[k] = el.value.trim();
+  }
+  for (const k of Object.keys(DEFAULT_RENDER_PARAMS)) {
+    const el = $('cfg_'+k);
+    if (el) {
+      const v = el.value;
+      renderParams[k] = isNaN(parseFloat(v)) ? v : (k==='logo_side' ? v : parseFloat(v));
+    }
+  }
+  for (const k of Object.keys(DEFAULT_PROMPTS)) {
+    const el = $('prompt_'+k);
+    if (el) {
+      prompts[k] = el.value;
+      await dbPut('prompts', { id: k, text: el.value });
+    }
+  }
+  await dbPut('params', { id:'app', ...appParams });
+  await dbPut('params', { id:'render', ...renderParams });
+  toast('✅ Config saved!');
+}
+
+// ═══════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════
+async function init() {
+  db = await openDB();
+  await loadConfig();
+  await loadLearnedDict();
+  populateConfigUI();
+  await loadKeysUI();
+  
+  // Load mode
+  const modeStored = localStorage.getItem('svrs_mode') || 'assisted';
+  STATE.mode = modeStored;
+  updateModeBadge();
+}
+
+init();
+
+// ═══════════════════════════════════════════
+//  NAVIGATION
+// ═══════════════════════════════════════════
+function switchScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.ntab').forEach(t => t.classList.remove('active'));
+  $('screen-'+id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function toggleStep(n) {
+  const body = $('sb'+n);
+  body.classList.toggle('open');
+}
+
+function toggleMode() {
+  STATE.mode = STATE.mode === 'assisted' ? 'auto' : 'assisted';
+  localStorage.setItem('svrs_mode', STATE.mode);
+  updateModeBadge();
+  toast('Mode: ' + STATE.mode.charAt(0).toUpperCase() + STATE.mode.slice(1));
+}
+function updateModeBadge() {
+  const b = $('modeBadge');
+  b.textContent = STATE.mode === 'auto' ? 'Auto' : 'Assisted';
+  b.className = 'mode-badge' + (STATE.mode === 'auto' ? ' auto' : '');
+}
+
+function toggleCfg(key) {
+  appParams[key] = !appParams[key];
+  updateToggleUI('toggleCorrection', appParams[key]);
+}
+function updateToggleUI(id, val) {
+  const el = $(id);
+  el.className = 'toggle' + (val ? ' on' : '');
+}
+
+// ═══════════════════════════════════════════
+//  KEYS
+// ═══════════════════════════════════════════
+async function loadKeysUI() {
+  const keys = ['sarvam','sarvam_proxy','gemini','llm_proxy','groq','render_url','render_token'];
+  for (const k of keys) {
+    const v = await getKey(k);
+    const el = $('k_'+k);
+    if (el && v) el.value = v;
+    const status = $('ks_'+k);
+    if (status) {
+      status.textContent = v ? '✓ Saved' : 'Not set';
+      status.className = 'pill ' + (v ? 'pill-green' : 'pill-red');
+    }
+  }
+}
+
+async function saveKey(k) {
+  const map = {
+    sarvam:'k_sarvam', sarvam_proxy:'k_sarvam_proxy',
+    gemini:'k_gemini', llm_proxy:'k_llm_proxy', groq:'k_groq',
+    render_url:'k_render_url', render_token:'k_render_token'
+  };
+  const el = $(map[k]);
+  if (!el) return;
+  const v = el.value.trim();
+  await setKey(k, v);
+  const status = $('ks_'+k);
+  if (status) {
+    status.textContent = v ? '✓ Saved' : 'Not set';
+    status.className = 'pill ' + (v ? 'pill-green' : 'pill-red');
+  }
+  toast('✅ Key saved!');
+}
+
+function saveRenderUrl() {
+  const v = $('renderUrlInput').value.trim();
+  if (v) { setKey('render_url', v); toast('Render URL saved!'); }
+}
+
+async function testKey(provider) {
+  const key = await getKey(provider === 'sarvam' ? 'sarvam' : provider);
+  if (!key) { toast('⚠️ Key नहीं मिली'); return; }
+  toast('Testing...');
+  try {
+    if (provider === 'gemini') {
+      const proxyUrl = await getKey('llm_proxy');
+      const base = proxyUrl || 'https://generativelanguage.googleapis.com';
+      const r = await fetch(`${base}/v1beta/models?key=${key}`);
+      toast(r.ok ? '✅ Gemini key OK' : `❌ Gemini error ${r.status}`);
+    } else if (provider === 'groq') {
+      const r = await fetch('https://api.groq.com/openai/v1/models', {
+        headers: { Authorization: 'Bearer ' + key }
+      });
+      toast(r.ok ? '✅ Groq key OK' : `❌ Groq error ${r.status}`);
+    } else if (provider === 'sarvam') {
+      toast('ℹ️ Sarvam test: upload a file to verify');
+    }
+  } catch(e) {
+    toast('❌ Test failed: ' + e.message);
+  }
+}
+
+// ═══════════════════════════════════════════
+//  FILE HANDLING
+// ═══════════════════════════════════════════
+function onDragOver(e) { e.preventDefault(); $('dropZone').classList.add('dragover'); }
+function onDragLeave(e) { $('dropZone').classList.remove('dragover'); }
+function onDrop(e) {
+  e.preventDefault();
+  $('dropZone').classList.remove('dragover');
+  const f = e.dataTransfer.files[0];
+  if (f) handleFile(f);
+}
+
+function handleFile(file) {
+  if (!file) return;
+  STATE.selectedFile = file;
+  const dz = $('dropZone');
+  dz.classList.add('has-file');
+  const sizeMB = (file.size / 1e6).toFixed(1);
+  const icon = file.type.startsWith('video') ? '🎥' : '🎙️';
+  
+  $('fileChip').style.display = 'flex';
+  $('fileChip').innerHTML = `
+    <span class="file-chip-icon">${icon}</span>
+    <span class="file-chip-info">
+      <div class="file-chip-name">${esc(file.name)}</div>
+      <div class="file-chip-meta">${sizeMB} MB · ${file.type || 'audio/video'}</div>
+    </span>
+    <button class="file-chip-x" onclick="removeFile()">✕</button>
+  `;
+  $('transcribeBtn').disabled = false;
+}
+
+function removeFile() {
+  STATE.selectedFile = null;
+  $('dropZone').classList.remove('has-file');
+  $('fileChip').style.display = 'none';
+  $('transcribeBtn').disabled = true;
+  $('fileInput').value = '';
+}
+
+function handleLogo(e) {
+  STATE.logoFile = e.target.files[0];
+  $('logoName').textContent = STATE.logoFile ? STATE.logoFile.name : '';
+}
+
+// ═══════════════════════════════════════════
+//  STAGE 0: TRANSCRIPTION
+// ═══════════════════════════════════════════
+async function startTranscription() {
+  if (!STATE.selectedFile) { toast('⚠️ File चुनें पहले'); return; }
+  const sarvamKey = await getKey('sarvam');
+  const proxyUrl = await getKey('sarvam_proxy');
+  if (!sarvamKey) { toast('⚠️ Sarvam API key डालें (Keys menu)'); return; }
+  if (!proxyUrl) { toast('⚠️ Sarvam Proxy URL डालें (Keys menu)'); return; }
+
+  STATE.isTranscribing = true;
+  STATE.cancelled = false;
+  STATE.allTimestamps = [];
+  
+  setStepStatus(0, 'running', 'Transcribing');
+  hide('transcriptSection'); hide('proceedToSelectBtn'); hide('errBox0');
+  show('progWrap'); show('cancelBtn');
+  $('transcribeBtn').disabled = true;
+
+  const startMs = Date.now();
+
+  try {
+    setProgress('Audio decode हो रहा है...', 2, '');
+    const audioBuffer = await decodeFile(STATE.selectedFile);
+    STATE.audioBuffer = audioBuffer;
+    const totalDur = audioBuffer.duration;
+    const numChunks = Math.ceil(totalDur / CHUNK_SEC);
+    const parts = new Array(numChunks).fill(null);
+    let done = 0, okCount = 0, errCount = 0;
+
+    function updatePoolProgress() {
+      const pct = Math.round((done / numChunks) * 95) + 2;
+      setProgress(`Transcribing: ${done}/${numChunks} chunks`, pct,
+        `⏱️ ${fmtTime(totalDur)} audio · ${CONCURRENCY} parallel · OK:${okCount} Err:${errCount}`);
+    }
+
+    async function processChunk(i) {
+      const ss = Math.floor(i * CHUNK_SEC * audioBuffer.sampleRate);
+      const se = Math.min(Math.floor((i * CHUNK_SEC + CHUNK_SEC) * audioBuffer.sampleRate), audioBuffer.length);
+      const wavBlob = chunkToWavBlob(audioBuffer, ss, se);
+      let transcript = '', retries = 0, chunkOk = false, lastErr = '';
+
+      while (retries <= MAX_RETRIES && !STATE.cancelled) {
+        try {
+          const fd = new FormData();
+          fd.append('file', wavBlob, `chunk_${i}.wav`);
+          const sModel = appParams.sarvam_model || 'saaras:v3';
+          fd.append('model', sModel);
+          fd.append('language_code', 'hi-IN');
+          if (sModel.startsWith('saaras')) fd.append('mode', 'transcribe');
+
+          const resp = await fetch(proxyUrl + '/speech-to-text', {
+            method: 'POST',
+            headers: { 'api-subscription-key': sarvamKey },
+            body: fd
+          });
+
+          if (resp.status === 429) {
+            lastErr = 'Rate limit'; retries++;
+            await sleep(4000 + Math.random()*2000); continue;
+          }
+          if (resp.status === 401 || resp.status === 403) throw new Error('❌ API key गलत है।');
+          if (!resp.ok) {
+            lastErr = `HTTP ${resp.status}`; retries++;
+            await sleep(2000); continue;
+          }
+
+          const data = await resp.json();
+          const tx = (data.transcript || '').trim();
+          const ts = data.timestamps;
+          const chunkOffset = i * CHUNK_SEC;
+
+          if (ts && Array.isArray(ts.words) && Array.isArray(ts.start_time_seconds) && ts.words.length > 0) {
+            for (let w = 0; w < ts.words.length; w++) {
+              STATE.allTimestamps.push({
+                word: ts.words[w],
+                start: (ts.start_time_seconds[w]||0) + chunkOffset,
+                end:   (ts.end_time_seconds[w]||0) + chunkOffset
+              });
+            }
+          } else if (tx) {
+            // No word-level timestamps from this model → push one chunk-level cue;
+            // buildSRT() detects this (span >= 2s) and splits the text evenly.
+            STATE.allTimestamps.push({ word: tx, start: chunkOffset, end: Math.min(chunkOffset + CHUNK_SEC, totalDur) });
+          }
+
+          transcript = tx;
+          chunkOk = !!tx;
+          if (!tx) lastErr = '200 OK but empty (silent chunk?)';
+          break;
+        } catch(fetchErr) {
+          if (fetchErr.message && fetchErr.message.includes('API key')) throw fetchErr;
+          lastErr = fetchErr.message; retries++;
+          await sleep(2000 + Math.random()*500);
+        }
+      }
+
+      parts[i] = transcript || `[chunk ${i+1} error: ${lastErr}]`;
+      done++;
+      if (chunkOk) okCount++; else errCount++;
+      updatePoolProgress();
+    }
+
+    const queue = Array.from({length:numChunks}, (_,i)=>i);
+    async function runWorker() {
+      while (queue.length > 0 && !STATE.cancelled) {
+        const i = queue.shift();
+        if (i === undefined) return;
+        await processChunk(i);
+      }
+    }
+
+    setProgress(`${numChunks} chunks तैयार`, 5, `कुल: ${fmtTime(totalDur)} · शुरू...`);
+    await Promise.all(Array.from({length: Math.min(CONCURRENCY, numChunks)}, () => runWorker()));
+    STATE.allTimestamps.sort((a,b) => a.start - b.start);
+
+    if (STATE.cancelled) {
+      setProgress('🛑 रोका गया', 0, '');
+      setStepStatus(0,'idle','Cancelled');
+    } else {
+      const full = parts.filter(t => t && !t.startsWith('[chunk')).join(' ').trim();
+      const elapsed = ((Date.now()-startMs)/1000).toFixed(0);
+      setProgress('✅ Transcription पूरा!', 100, `${done}/${numChunks} · ${elapsed}s`);
+
+      STATE.transcriptText = full;
+      STATE.srtFull = buildSRT(STATE.allTimestamps);
+
+      $('transcriptText').value = full;
+      const words = full.split(/\s+/).filter(w=>w).length;
+      $('transcriptMeta').innerHTML = `📊 ${words} शब्द · ⏱️ ${fmtTime(totalDur)} · ⚡ ${elapsed}s`;
+      show('transcriptSection');
+      show('proceedToSelectBtn');
+      setStepStatus(0, 'done', 'Done');
+      toast('✅ Transcript तैयार!');
+    }
+  } catch(err) {
+    showError('errBox0', err.message || 'Unknown error');
+    setStepStatus(0, 'error', 'Error');
+  }
+
+  STATE.isTranscribing = false;
+  $('transcribeBtn').disabled = false;
+  hide('cancelBtn');
+}
+
+function cancelTranscription() { STATE.cancelled = true; }
+
+// ═══════════════════════════════════════════
+//  AUDIO DECODE
+// ═══════════════════════════════════════════
+async function decodeFile(file) {
+  const ctx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
+  const buf = await file.arrayBuffer();
+  return ctx.decodeAudioData(buf);
+}
+
+function chunkToWavBlob(audioBuffer, startSample, endSample) {
+  const sr = audioBuffer.sampleRate;
+  const len = endSample - startSample;
+  const pcm = new Float32Array(len);
+
+  // Mix all channels to mono
+  for (let c = 0; c < audioBuffer.numberOfChannels; c++) {
+    const chan = audioBuffer.getChannelData(c);
+    for (let i = 0; i < len; i++) pcm[i] += chan[startSample + i];
+  }
+  if (audioBuffer.numberOfChannels > 1) {
+    for (let i = 0; i < len; i++) pcm[i] /= audioBuffer.numberOfChannels;
+  }
+
+  const int16 = new Int16Array(len);
+  for (let i = 0; i < len; i++) int16[i] = Math.max(-32768, Math.min(32767, pcm[i] * 32767));
+
+  const wavBuf = new ArrayBuffer(44 + int16.byteLength);
+  const view = new DataView(wavBuf);
+  const writeStr = (off, str) => { for (let i=0;i<str.length;i++) view.setUint8(off+i,str.charCodeAt(i)); };
+
+  writeStr(0,'RIFF');
+  view.setUint32(4, 36 + int16.byteLength, true);
+  writeStr(8,'WAVE'); writeStr(12,'fmt ');
+  view.setUint32(16,16,true); view.setUint16(20,1,true);
+  view.setUint16(22,1,true); view.setUint32(24,sr,true);
+  view.setUint32(28,sr*2,true); view.setUint16(32,2,true);
+  view.setUint16(34,16,true); writeStr(36,'data');
+  view.setUint32(40,int16.byteLength,true);
+  new Int16Array(wavBuf,44).set(int16);
+  return new Blob([wavBuf], {type:'audio/wav'});
+}
+
+// ═══════════════════════════════════════════
+//  SRT BUILD (from transcriber_8)
+// ═══════════════════════════════════════════
+const SRT_MAX_CHARS=84, SRT_MAX_LINE_CHARS=42, SRT_MIN_DUR=1.0, SRT_MAX_DUR=7.0, SRT_CPS=17, SRT_GAP_BREAK=0.40;
+
+function buildSRT(timestamps) {
+  const hasWordLevel = timestamps.some(t => (t.end - t.start) < 2.0);
+  let wordList;
+  if (hasWordLevel) {
+    wordList = timestamps.map(t => ({ word: t.word, start: +t.start, end: +t.end }));
+  } else {
+    wordList = [];
+    for (const t of timestamps) {
+      const words = (t.word||'').split(/\s+/).filter(Boolean);
+      if (!words.length) continue;
+      const dur = Math.max(0.1, t.end - t.start);
+      const per = dur / words.length;
+      for (let i=0;i<words.length;i++) wordList.push({ word:words[i], start:t.start+i*per, end:t.start+(i+1)*per });
+    }
+  }
+  if (!wordList.length) return '';
+
+  const cues = [];
+  let cur = { start: wordList[0].start, end: wordList[0].end, words: [] };
+  const flush = () => { if (!cur.words.length) return; const text = cur.words.map(w=>w.word).join(' '); cues.push({start:cur.start,end:cur.end,text}); };
+  const sentenceEnd = /[।.?!]$/;
+  const softPunct = /[,;:]$/;
+
+  for (let i=0;i<wordList.length;i++) {
+    const w=wordList[i], prev=wordList[i-1];
+    if (prev && (w.start-prev.end)>SRT_GAP_BREAK && cur.words.length>=3) { flush(); cur={start:w.start,end:w.end,words:[]}; }
+    cur.words.push(w); cur.end=w.end;
+    const curText=cur.words.map(x=>x.word).join(' '), curDur=cur.end-cur.start, lastTok=w.word;
+    const tooLong=curText.length>=SRT_MAX_CHARS, tooSlow=curDur>=SRT_MAX_DUR;
+    const sentDone=sentenceEnd.test(lastTok)&&curText.length>=20&&curDur>=SRT_MIN_DUR;
+    const softOk=softPunct.test(lastTok)&&curText.length>=50;
+    if (tooLong||tooSlow||sentDone||softOk) { flush(); cur={start:w.end,end:w.end,words:[]}; }
+  }
+  flush();
+
+  for (let i=cues.length-1;i>=0;i--) {
+    const c=cues[i]; const wc=c.text.split(/\s+/).length;
+    if (wc<3&&cues.length>1) {
+      if (i>0&&(cues[i-1].text.length+c.text.length+1)<=SRT_MAX_CHARS) { cues[i-1].text+=' '+c.text; cues[i-1].end=c.end; cues.splice(i,1); }
+      else if (i<cues.length-1) { cues[i+1].text=c.text+' '+cues[i+1].text; cues[i+1].start=c.start; cues.splice(i,1); }
+    }
+  }
+  for (let i=0;i<cues.length;i++) {
+    const c=cues[i];
+    const ideal=Math.max(SRT_MIN_DUR,Math.min(SRT_MAX_DUR,c.text.length/SRT_CPS));
+    if (c.end-c.start<ideal) { const next=cues[i+1]; const maxEnd=next?next.start-0.05:c.end+(ideal-(c.end-c.start)); c.end=Math.min(c.start+ideal,maxEnd); if(c.end<c.start+SRT_MIN_DUR) c.end=c.start+SRT_MIN_DUR; }
+    const next=cues[i+1]; if(next&&c.end>next.start) c.end=Math.max(c.start+SRT_MIN_DUR,next.start-0.05);
+  }
+
+  const wrap=(text)=>{
+    if(text.length<=SRT_MAX_LINE_CHARS) return text;
+    const words=text.split(' '); let best=-1,bestDiff=Infinity,acc=0; const half=text.length/2;
+    for(let i=0;i<words.length-1;i++){acc+=words[i].length+1;const diff=Math.abs(acc-half);if(diff<bestDiff&&acc<=SRT_MAX_LINE_CHARS){bestDiff=diff;best=i;}}
+    if(best<0) best=Math.floor(words.length/2)-1;
+    return words.slice(0,best+1).join(' ')+'\n'+words.slice(best+1).join(' ');
+  };
+  const toSRTTime=(s)=>{
+    s=Math.max(0,+s||0);const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sec=Math.floor(s%60),ms=Math.round((s-Math.floor(s))*1000);
+    const pad=(n,w=2)=>n.toString().padStart(w,'0');
+    return `${pad(h)}:${pad(m)}:${pad(sec)},${pad(ms,3)}`;
+  };
+  return cues.map((c,i)=>`${i+1}\n${toSRTTime(c.start)} --> ${toSRTTime(c.end)}\n${wrap(c.text)}\n`).join('\n');
+}
+
+function rebaseSRT(srtFull, clipStart, clipEnd) {
+  // Parse SRT, keep only lines within window, rebase timestamps
+  const lines = srtFull.split('\n');
+  const cues = [];
+  let i = 0;
+  while (i < lines.length) {
+    const n = lines[i].trim();
+    if (!n || isNaN(parseInt(n))) { i++; continue; }
+    const tsLine = (lines[i+1]||'').trim();
+    const textLine = (lines[i+2]||'').trim();
+    const m = tsLine.match(/(\d+:\d+:\d+,\d+)\s*-->\s*(\d+:\d+:\d+,\d+)/);
+    if (!m) { i++; continue; }
+    const s = parseSRTTime(m[1]), e = parseSRTTime(m[2]);
+    i += 3;
+    if (e < clipStart || s > clipEnd) continue;
+    cues.push({ s: Math.max(0, s - clipStart), e: Math.min(clipEnd - clipStart, e - clipStart), text: textLine });
+  }
+  return cues.map((c,idx) => `${idx+1}\n${toSRTTime(c.s)} --> ${toSRTTime(c.e)}\n${c.text}\n`).join('\n');
+}
+
+function parseSRTTime(str) {
+  const [hms,ms] = str.split(',');
+  const [h,m,s] = hms.split(':').map(Number);
+  return h*3600+m*60+s+parseInt(ms)/1000;
+}
+
+function toSRTTime(s) {
+  s=Math.max(0,+s||0);const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sec=Math.floor(s%60),ms=Math.round((s-Math.floor(s))*1000);
+  const pad=(n,w=2)=>n.toString().padStart(w,'0');
+  return `${pad(h)}:${pad(m)}:${pad(sec)},${pad(ms,3)}`;
+}
+
+function downloadSRT() {
+  if (!STATE.srtFull) { toast('⚠️ SRT नहीं बना'); return; }
+  const name = (STATE.selectedFile?.name||'pravachan').replace(/\.[^.]+$/,'') + '.srt';
+  downloadText(STATE.srtFull, name, 'application/x-subrip');
+}
+
+// ═══════════════════════════════════════════
+//  STAGE 1: CLIP SELECT
+// ═══════════════════════════════════════════
+async function proceedToSelect() {
+  STATE.transcriptText = $('transcriptText').value.trim();
+  if (!STATE.transcriptText) { toast('⚠️ Transcript empty है'); return; }
+
+  setStepStatus(1,'running','Selecting');
+  openStep(1);
+  show('selectRunning'); hide('errBox1');
+  $('candidateList').innerHTML = '';
+
+  try {
+    const geminiKey = await getKey('gemini');
+    if (!geminiKey) { showError('errBox1','Gemini API key नहीं मिली (Keys menu)'); setStepStatus(1,'error','Error'); return; }
+
+    const prompt = prompts.clip_select.replace('<<TRANSCRIPT>>', STATE.transcriptText);
+    const result = await callGemini(geminiKey, appParams.clip_model, prompt, await getKey('llm_proxy'));
+    const candidates = parseJSON(result);
+    if (!Array.isArray(candidates) || candidates.length === 0) throw new Error('Candidates parse नहीं हुए');
+
+    STATE.candidates = candidates.slice(0, 5);
+    hide('selectRunning');
+    renderCandidates();
+
+    if (STATE.mode === 'auto') {
+      await autoPickBest(geminiKey);
+    } else {
+      $('selectBtns').style.display = 'flex';
+      $('nudgeSection').style.display = 'block';
+      setStepStatus(1, 'active', 'Pick करें');
+    }
+  } catch(err) {
+    hide('selectRunning');
+    showError('errBox1', err.message);
+    setStepStatus(1,'error','Error');
+  }
+}
+
+function renderCandidates() {
+  const list = $('candidateList');
+  list.innerHTML = '';
+  STATE.candidates.forEach((c, idx) => {
+    const div = document.createElement('div');
+    div.className = 'cand-card';
+    div.id = `cand${idx}`;
+    div.innerHTML = `
+      <div class="cand-rank">Candidate ${idx+1} ${STATE.mode==='auto'&&idx===STATE.pickIndex?'<span class="cand-auto-badge">AUTO PICK</span>':''}</div>
+      <div class="cand-title">${esc(c.title_hindi||'')}</div>
+      <div class="cand-reason">${esc(c.reason||'')}</div>
+      <div class="cand-time">${fmtTime(c.start_sec)} → ${fmtTime(c.end_sec)} · ${Math.round(c.end_sec-c.start_sec)}s</div>
+    `;
+    div.onclick = () => selectCandidate(idx);
+    list.appendChild(div);
+  });
+}
+
+function selectCandidate(idx) {
+  document.querySelectorAll('.cand-card').forEach(c => c.classList.remove('selected'));
+  $(`cand${idx}`)?.classList.add('selected');
+  STATE.pickIndex = idx;
+  const c = STATE.candidates[idx];
+  $('nudgeIn').value = c.start_sec;
+  $('nudgeOut').value = c.end_sec;
+  $('confirmPickBtn').disabled = false;
+}
+
+async function autoPickBest(geminiKey) {
+  setStepStatus(1,'running','Auto-picking');
+  try {
+    const rankPrompt = prompts.rank.replace('<<CANDIDATES_JSON>>', JSON.stringify(STATE.candidates));
+    const result = await callGemini(geminiKey, appParams.clip_model, rankPrompt, await getKey('llm_proxy'));
+    const parsed = parseJSON(result);
+    const bestIdx = Math.max(0, Math.min(STATE.candidates.length-1, parsed.best_index || 0));
+    STATE.pickIndex = bestIdx;
+    selectCandidate(bestIdx);
+    // Re-render to show AUTO PICK badge
+    renderCandidates();
+    selectCandidate(bestIdx);
+    setStepStatus(1,'done','Auto-picked');
+    await proceedToCorrect();
+  } catch(err) {
+    showError('errBox1', 'Auto-pick failed: ' + err.message + '. कृपया manually चुनें।');
+    $('selectBtns').style.display = 'flex';
+    $('nudgeSection').style.display = 'block';
+    setStepStatus(1,'active','Pick करें');
+  }
+}
+
+async function confirmPick() {
+  if (STATE.pickIndex < 0) { toast('⚠️ एक candidate चुनें'); return; }
+  const inVal = parseFloat($('nudgeIn').value) || STATE.candidates[STATE.pickIndex].start_sec;
+  const outVal = parseFloat($('nudgeOut').value) || STATE.candidates[STATE.pickIndex].end_sec;
+  STATE.clipStart = Math.max(0, inVal);
+  STATE.clipEnd = outVal;
+  setStepStatus(1,'done','Done');
+  await proceedToCorrect();
+}
+
+// ═══════════════════════════════════════════
+//  STAGE 2: CORRECTION
+// ═══════════════════════════════════════════
+async function proceedToCorrect() {
+  openStep(2);
+  setStepStatus(2,'running','Correcting');
+  show('correctRunning'); hide('errBox2'); hide('diffView'); hide('correctedSRTWrap');
+
+  try {
+    const clipSRT = rebaseSRT(STATE.srtFull, STATE.clipStart, STATE.clipEnd);
+    STATE.clipLines = parseSRTToLines(clipSRT);
+
+    if (appParams.correction_enabled) {
+      const geminiKey = await getKey('gemini');
+      const groqKey = await getKey('groq');
+      const llmProxy = await getKey('llm_proxy');
+
+      STATE.clipLines = await correctClipLines(STATE.clipLines, geminiKey, groqKey, llmProxy);
+    }
+
+    STATE.correctedSRT = linesToSRT(STATE.clipLines);
+
+    hide('correctRunning');
+    renderDiff();
+    $('correctedSRT').textContent = STATE.correctedSRT;
+    show('correctedSRTWrap');
+    setStepStatus(2,'done','Done');
+    await proceedToTitle();
+  } catch(err) {
+    hide('correctRunning');
+    showError('errBox2', err.message);
+    setStepStatus(2,'error','Error');
+  }
+}
+
+function parseSRTToLines(srt) {
+  const lines = []; const parts = srt.split('\n'); let i = 0;
+  while (i < parts.length) {
+    const n = parts[i].trim();
+    if (!n || isNaN(parseInt(n))) { i++; continue; }
+    const tsLine = (parts[i+1]||'').trim();
+    const text = (parts[i+2]||'').trim();
+    const m = tsLine.match(/(\d+:\d+:\d+,\d+)\s*-->\s*(\d+:\d+:\d+,\d+)/);
+    if (!m) { i++; continue; }
+    lines.push({ s: parseSRTTime(m[1]), e: parseSRTTime(m[2]), before: text, after: text });
+    i += 3;
+  }
+  return lines;
+}
+
+function linesToSRT(lines) {
+  return lines.map((l,i) => `${i+1}\n${toSRTTime(l.s)} --> ${toSRTTime(l.e)}\n${l.after}\n`).join('\n');
+}
+
+function applyCache(text, learned) {
+  let result = text;
+  for (const [word, data] of Object.entries(learned)) {
+    if (data.count >= 2) {
+      result = result.replace(new RegExp('\\b'+escapeRegex(word)+'\\b','g'), data.replacement);
+    }
+  }
+  return result;
+}
+
+async function correctClipLines(lines, geminiKey, groqKey, llmProxy) {
+  // Apply learned dict
+  const pre = lines.map(l => ({ ...l, after: applyCache(l.before, STATE.learned) }));
+
+  let made = pre.map(l => ({...l}));
+
+  if (geminiKey) {
+    try {
+      const linesJson = JSON.stringify(pre.map((l,i) => ({ i, text: l.after })));
+      const makerPrompt = prompts.maker.replace('<<LINES_JSON>>', linesJson);
+      const result = await callGemini(geminiKey, appParams.maker_model, makerPrompt, llmProxy);
+      const parsed = parseJSON(result);
+      if (Array.isArray(parsed) && parsed.length === pre.length) {
+        parsed.sort((a,b)=>a.i-b.i);
+        made = pre.map((l,i) => ({ ...l, after: parsed[i]?.text || l.after }));
+      }
+    } catch(e) { console.warn('Maker failed:', e); }
+  }
+
+  let revertSet = new Set();
+  if (groqKey) {
+    try {
+      const pairsJson = JSON.stringify(pre.map((l,i) => ({ i, before: pre[i].after, after: made[i].after })));
+      const checkerPrompt = prompts.checker.replace('<<PAIRS_JSON>>', pairsJson);
+      const result = await callGroq(groqKey, appParams.checker_model, checkerPrompt);
+      const parsed = parseJSON(result);
+      if (parsed.revert && Array.isArray(parsed.revert)) revertSet = new Set(parsed.revert);
+    } catch(e) { console.warn('Checker failed:', e); }
+  }
+
+  const final = pre.map((l,i) => ({ ...l, after: revertSet.has(i) ? pre[i].after : made[i].after }));
+
+  // Learn approved single-word changes
+  for (let i = 0; i < pre.length; i++) {
+    if (revertSet.has(i)) continue;
+    const a = pre[i].after.split(/\s+/), b = final[i].after.split(/\s+/);
+    if (a.length === b.length) {
+      for (let j = 0; j < a.length; j++) {
+        if (a[j] !== b[j]) {
+          const w = a[j];
+          if (!STATE.learned[w]) STATE.learned[w] = { replacement: b[j], count: 0 };
+          STATE.learned[w].count++;
+          if (STATE.learned[w].count >= 2) STATE.learned[w].replacement = b[j];
+        }
+      }
+    }
+  }
+  await saveLearnedDict();
+  return final;
+}
+
+function renderDiff() {
+  const changed = STATE.clipLines.filter(l => l.before !== l.after);
+  if (!changed.length) {
+    $('diffView').innerHTML = '<div style="color:var(--text3);font-size:12px;padding:6px;">कोई correction नहीं हुई।</div>';
+  } else {
+    $('diffView').innerHTML = changed.map(l => `
+      <div class="diff-line diff-changed">
+        <div class="diff-before">${esc(l.before)}</div>
+        <div class="diff-after">→ ${esc(l.after)}</div>
+      </div>`).join('');
+  }
+  show('diffView');
+}
+
+// ═══════════════════════════════════════════
+//  STAGE 3: TITLE
+// ═══════════════════════════════════════════
+async function proceedToTitle() {
+  openStep(3);
+  setStepStatus(3,'running','Generating');
+  show('titleRunning'); hide('errBox3'); hide('titleDisplay');
+
+  try {
+    const geminiKey = await getKey('gemini');
+    if (!geminiKey) throw new Error('Gemini key नहीं मिली');
+
+    const clipText = STATE.clipLines.map(l=>l.after).join(' ');
+    const prompt = prompts.title.replace('<<CLIP>>', clipText);
+    const result = await callGemini(geminiKey, appParams.title_model, prompt, await getKey('llm_proxy'));
+    STATE.titleText = result.trim().replace(/^["']|["']$/g,'');
+
+    hide('titleRunning');
+    $('titleDisplay').textContent = STATE.titleText;
+    $('titleEdit').value = STATE.titleText;
+    show('titleDisplay');
+    $('titleEditWrap').style.display = 'flex';
+    setStepStatus(3,'done','Done');
+    await proceedToRender();
+  } catch(err) {
+    hide('titleRunning');
+    showError('errBox3', err.message);
+    setStepStatus(3,'error','Error');
+  }
+}
+
+function useEditedTitle() {
+  const v = $('titleEdit').value.trim();
+  if (v) { STATE.titleText = v; $('titleDisplay').textContent = v; toast('✅ Title updated'); }
+}
+
+// ═══════════════════════════════════════════
+//  STAGE 4: RENDER
+// ═══════════════════════════════════════════
+async function proceedToRender() {
+  openStep(4);
+  setStepStatus(4,'running','Rendering');
+
+  const renderUrl = await getKey('render_url');
+  if (!renderUrl) {
+    $('renderUrlSection').style.display = 'block';
+    showError('errBox4', 'Render Service URL नहीं मिली। Keys menu में add करें।\n\nRender service: FastAPI + FFmpeg container (deploy on Fly.io/Cloud Run).\nURL यहाँ paste करें और फिर Try Again बटन press करें।');
+    setStepStatus(4,'error','No Render URL');
+    // Add try again button
+    const btn = document.createElement('button');
+    btn.className = 'btn btn-primary'; btn.style.marginTop='10px';
+    btn.textContent = '🔄 Try Again'; btn.onclick = () => { hide('errBox4'); proceedToRender(); };
+    $('sb4').appendChild(btn);
+    return;
+  }
+
+  show('renderRunning'); hide('errBox4'); hide('renderDoneMsg');
+
+  try {
+    const renderToken = await getKey('render_token');
+    const fd = new FormData();
+    fd.append('source', STATE.selectedFile, STATE.selectedFile.name);
+    if (STATE.logoFile) fd.append('logo', STATE.logoFile, STATE.logoFile.name);
+    fd.append('clip_start', STATE.clipStart);
+    fd.append('clip_end', STATE.clipEnd);
+    fd.append('clip_srt', new Blob([STATE.correctedSRT], {type:'text/plain'}), 'clip.srt');
+    fd.append('title_text', STATE.titleText);
+    fd.append('params', JSON.stringify(renderParams));
+
+    const headers = {};
+    if (renderToken) headers['X-Render-Token'] = renderToken;
+
+    const resp = await fetch(renderUrl + '/render', { method:'POST', headers, body:fd });
+
+    if (!resp.ok) {
+      let errMsg = `Render failed (${resp.status})`;
+      try { const j = await resp.json(); errMsg = j.error + (j.ffmpeg_stderr_tail ? '\n\nFFmpeg:\n'+j.ffmpeg_stderr_tail : ''); } catch(e){}
+      throw new Error(errMsg);
+    }
+
+    const blob = await resp.blob();
+    STATE.outputBlobUrl = URL.createObjectURL(blob);
+
+    hide('renderRunning');
+    show('renderDoneMsg');
+    setStepStatus(4,'done','Done');
+    await proceedToMetadata();
+  } catch(err) {
+    hide('renderRunning');
+    showError('errBox4', err.message);
+    setStepStatus(4,'error','Error');
+    const btn = document.createElement('button');
+    btn.className='btn btn-outline btn-sm'; btn.style.marginTop='8px';
+    btn.textContent='🔄 Retry Render'; btn.onclick=()=>{
+      btn.remove(); hide('errBox4'); proceedToRender();
+    };
+    $('errBox4').after(btn);
+  }
+}
+
+// ═══════════════════════════════════════════
+//  STAGE 5: METADATA
+// ═══════════════════════════════════════════
+async function proceedToMetadata() {
+  openStep(5);
+  setStepStatus(5,'running','Writing');
+  show('metaRunning'); hide('errBox5'); hide('metaView');
+
+  try {
+    const geminiKey = await getKey('gemini');
+    if (!geminiKey) throw new Error('Gemini key नहीं मिली');
+
+    const prompt = prompts.metadata.replace('<<HEADLINE>>', STATE.titleText);
+    const result = await callGemini(geminiKey, appParams.metadata_model, prompt, await getKey('llm_proxy'));
+    STATE.metadata = parseJSON(result);
+
+    hide('metaRunning');
+    $('metaTitle').textContent = STATE.metadata.title || '';
+    $('metaDesc').textContent = STATE.metadata.description || '';
+    const hEl = $('metaHashtags');
+    hEl.innerHTML = (STATE.metadata.hashtags||[]).map(h=>`<span class="hashtag">${esc(h)}</span>`).join('');
+    show('metaView');
+    setStepStatus(5,'done','Done');
+    await proceedToReview();
+  } catch(err) {
+    hide('metaRunning');
+    showError('errBox5', err.message);
+    setStepStatus(5,'error','Error');
+  }
+}
+
+// ═══════════════════════════════════════════
+//  STAGE 6: REVIEW
+// ═══════════════════════════════════════════
+async function proceedToReview() {
+  openStep(6);
+  setStepStatus(6,'active','Review करें');
+  
+  if (STATE.outputBlobUrl) {
+    const vid = $('reviewVideo');
+    vid.src = STATE.outputBlobUrl;
+    hide('reviewWaiting');
+    show('reviewContent');
+  }
+}
+
+function downloadReel() {
+  if (!STATE.outputBlobUrl) { toast('⚠️ Video नहीं मिला'); return; }
+  const name = (STATE.selectedFile?.name||'reel').replace(/\.[^.]+$/,'') + '_reel.mp4';
+  const a = document.createElement('a');
+  a.href = STATE.outputBlobUrl; a.download = name; a.click();
+  toast('⬇️ Downloading...');
+}
+
+function downloadMetaJSON() {
+  if (!STATE.metadata) { toast('⚠️ Metadata नहीं है'); return; }
+  downloadText(JSON.stringify(STATE.metadata, null, 2), 'metadata.json', 'application/json');
+}
+
+function startNewJob() {
+  if (!confirm('नया Pravachan शुरू करें? Current progress clear हो जाएगा।')) return;
+  location.reload();
+}
+
+// ═══════════════════════════════════════════
+//  LLM CALLS
+// ═══════════════════════════════════════════
+async function callGemini(key, model, prompt, proxyUrl) {
+  const base = (proxyUrl || 'https://generativelanguage.googleapis.com');
+  const url = `${base}/v1beta/models/${model}:generateContent?key=${key}`;
+  const body = { contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.2, maxOutputTokens: 4096 } };
+  const resp = await fetch(url, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body) });
+  if (!resp.ok) { const t = await resp.text(); throw new Error(`Gemini error ${resp.status}: ${t.slice(0,300)}`); }
+  const data = await resp.json();
+  return data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+}
+
+async function callGroq(key, model, prompt) {
+  const resp = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+    method:'POST',
+    headers:{'Authorization':'Bearer '+key,'Content-Type':'application/json'},
+    body:JSON.stringify({ model, messages:[{role:'user',content:prompt}], temperature:0.1, max_tokens:2048 })
+  });
+  if (!resp.ok) { const t = await resp.text(); throw new Error(`Groq error ${resp.status}: ${t.slice(0,300)}`); }
+  const data = await resp.json();
+  return data.choices?.[0]?.message?.content || '';
+}
+
+function parseJSON(text) {
+  const clean = text.replace(/^```json\s*/,'').replace(/^```\s*/,'').replace(/```\s*$/,'').trim();
+  return JSON.parse(clean);
+}
+
+// ═══════════════════════════════════════════
+//  UI HELPERS
+// ═══════════════════════════════════════════
+function $(id) { return document.getElementById(id); }
+function show(id) { const el=$(id); if(el){el.style.display='';el.classList.add('show');} }
+function hide(id) { const el=$(id); if(el){el.style.display='none';el.classList.remove('show');} }
+function esc(s) { return s?s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'):''; }
+function sleep(ms) { return new Promise(r=>setTimeout(r,ms)); }
+function fmtTime(s) { s=parseFloat(s)||0; const m=Math.floor(s/60),sec=Math.floor(s%60); return `${m}:${sec.toString().padStart(2,'0')}`; }
+function escapeRegex(s) { return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+
+function setProgress(title, pct, detail) {
+  $('progTitle').textContent = title;
+  $('progPct').textContent = pct + '%';
+  $('progFill').style.width = pct + '%';
+  $('progDetail').innerHTML = detail || '';
+}
+
+function setStepStatus(n, state, label) {
+  const card = $('step'+n);
+  const status = $('s'+n+'status');
+  card.className = 'step-card' + (state==='running'||state==='active'?' active':state==='done'?' done':state==='error'?' error':'');
+  if (status) status.textContent = label;
+}
+
+function openStep(n) {
+  const body = $('sb'+n);
+  body.classList.add('open');
+}
+
+function showError(id, msg) {
+  const el=$(id);
+  if(!el) return;
+  el.textContent = msg;
+  el.style.display='block';
+}
+
+function toast(msg) {
+  const t=$('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+function copyText(id) {
+  const el=$(id);
+  if(!el) return;
+  navigator.clipboard.writeText(el.textContent)
+    .then(()=>toast('📋 Copied!'))
+    .catch(()=>{const ta=document.createElement('textarea');ta.value=el.textContent;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);toast('📋 Copied!');});
+}
+
+function downloadText(text, name, mime) {
+  const blob = new Blob([text], {type:mime});
+  const a = document.createElement('a');
+  a.href=URL.createObjectURL(blob); a.download=name; a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+// ═══════════════════════════════════════════
+//  SERVICE WORKER REGISTRATION
+// ═══════════════════════════════════════════
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('[SW] Registered, scope:', reg.scope))
+      .catch(err => console.warn('[SW] Registration failed:', err));
+  });
+}
+
+// ═══════════════════════════════════════════
+//  PWA INSTALL PROMPT
+// ═══════════════════════════════════════════
+let deferredPrompt = null;
+
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  // Show a subtle install banner
+  const banner = document.createElement('div');
+  banner.id = 'installBanner';
+  banner.style.cssText = `
+    position:fixed;bottom:80px;left:50%;transform:translateX(-50%);
+    background:#943F08;color:#fff;
+    padding:12px 20px;border-radius:12px;
+    font-size:13px;font-family:'DM Sans',sans-serif;font-weight:600;
+    display:flex;align-items:center;gap:12px;z-index:9997;
+    box-shadow:0 4px 16px rgba(148,63,8,0.35);
+    animation:slideUp 0.3s ease;
+  `;
+  banner.innerHTML = `
+    <style>@keyframes slideUp{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}</style>
+    <span>📲 App install करें (offline भी काम करे)</span>
+    <button onclick="installPWA()" style="background:#fff;color:#943F08;border:none;border-radius:8px;padding:6px 14px;font-weight:800;cursor:pointer;font-family:inherit;font-size:12px;">Install</button>
+    <button onclick="document.getElementById('installBanner').remove()" style="background:none;border:none;color:rgba(255,255,255,0.7);cursor:pointer;font-size:18px;padding:0 4px;">✕</button>
+  `;
+  document.body.appendChild(banner);
+  setTimeout(() => banner?.remove(), 15000);
+});
+
+function installPWA() {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  deferredPrompt.userChoice.then(choice => {
+    if (choice.outcome === 'accepted') toast('✅ App install हो रहा है!');
+    deferredPrompt = null;
+    document.getElementById('installBanner')?.remove();
+  });
+}
+
+window.addEventListener('appinstalled', () => {
+  toast('✅ Vani Studio install हो गया!');
+  deferredPrompt = null;
+});
+</script>
+</body>
+</html>
