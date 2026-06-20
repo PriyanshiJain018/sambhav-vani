@@ -178,12 +178,12 @@ async def render(
         out_path  = os.path.join(work, "output.mp4")
         logo_path = None
 
-        with open(src_path, "wb")  as f: f.write(await source.read())
-        with open(srt_path, "wb")  as f: f.write(await clip_srt.read())
+        with open(src_path, "wb")  as f: shutil.copyfileobj(source.file, f, length=1024 * 1024)
+        with open(srt_path, "wb")  as f: shutil.copyfileobj(clip_srt.file, f)
 
         if logo and logo.filename:
             logo_path = os.path.join(work, "logo" + Path(logo.filename).suffix)
-            with open(logo_path, "wb") as f: f.write(await logo.read())
+            with open(logo_path, "wb") as f: shutil.copyfileobj(logo.file, f)
 
         # Build ASS title file
         ass_content = build_title_ass(title_text, clip_dur, p)
